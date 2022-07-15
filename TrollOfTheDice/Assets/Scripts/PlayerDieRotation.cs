@@ -7,4 +7,8 @@ public class PlayerDieRotation : MonoBehaviour {
         transform.Rotate(90 * z, 0, 0, Space.World);
         transform.Rotate(0, 0, -90 * x, Space.World);
     }
+
+    public float getActiveFace() {
+        return 1;
+    }
 }
