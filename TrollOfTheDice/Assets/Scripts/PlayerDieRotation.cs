@@ -14,7 +14,7 @@ public class PlayerDieRotation : MonoBehaviour {
         for (int i = 0; i < sides.Length; i++)
         {
             float pos = sides[i].position.y;
-            if (pos > gameObject.transform.position.y) {
+            if (pos - gameObject.transform.position.y > 0.01) {
                 Debug.Log(i + 1);
                 return i + 1;
             }
