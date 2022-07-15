@@ -14,16 +14,17 @@ public class PlayerInput : MonoBehaviour {
         float vertical = Input.GetAxisRaw("Vertical");
 
         // temporary movement code
-        if(Input.GetKeyDown(KeyCode.W)) {
+        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
             movement.move(0, 1);
         }
-        if(Input.GetKeyDown(KeyCode.S)) {
+        if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
             movement.move(0, -1);
         }
-        if(Input.GetKeyDown(KeyCode.A)) {
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
             movement.move(-1, 0);
         }
-        if(Input.GetKeyDown(KeyCode.D)) {
+        if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
             movement.move(1, 0);
         }
     }
