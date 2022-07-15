@@ -2,18 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
-    [SerializeField] private Grid levelGrid;
-    private Vector3Int gridPosition;
-
-    private void Start() {
-        gridPosition = levelGrid.WorldToCell(transform.position);
-        Debug.Log("Converted grid position: " + gridPosition);
-
-        transform.position = levelGrid.CellToWorld(gridPosition);
-        Debug.Log("New world position: " + transform.position);
-    }
-
+public class PlayerController : GridAligned {
     private void Update() {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -33,10 +22,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    private void move(int x, int z) {
+    private void move(int x, int y) {
         gridPosition.x += x;
-        gridPosition.z += z;
+        gridPosition.y += y;
 
-        transform.position = levelGrid.CellToWorld(gridPosition);
+        snapToGrid();
     }
 }
