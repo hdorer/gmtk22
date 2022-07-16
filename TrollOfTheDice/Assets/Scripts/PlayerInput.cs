@@ -30,16 +30,12 @@ public class PlayerInput : MonoBehaviour {
 
         // temporary movement code
         if(verticalDown(vertical)) {
-            isUndoing = false;
-
             if (movement.move(0, (int)Mathf.Sign(vertical))) {
                 rotation.rotateOnMove(0, (int)Mathf.Sign(vertical));
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
         if(horizontalDown(horizontal)) {
-            isUndoing = false;
-
             if (movement.move((int)Mathf.Sign(horizontal), 0)) {
                 rotation.rotateOnMove((int)Mathf.Sign(horizontal), 0);
                 undoEvents.addMoveStateEvent.Invoke();
@@ -47,22 +43,17 @@ public class PlayerInput : MonoBehaviour {
         }
         
         if (Input.GetButtonDown("RotateL") && canRotate) {
-            isUndoing = false;
-
             rotation.RotateCounterClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
         if (Input.GetButtonDown("RotateR") && canRotate) {
-            isUndoing = false;
-
             rotation.RotateClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
 
         if(Input.GetButtonDown("Undo")) {
-            isUndoing = true;
             undoEvents.undoLastMoveEvent.Invoke();
             movement.undoLastMove();
             rotation.undoLastMove();

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TileVariables : GridAligned
-{
+public class TileVariables : Undoable {
     [SerializeField] private int victoryNum;
     [SerializeField] private bool isActive;
     [SerializeField] private bool isPermanent;
@@ -14,25 +13,37 @@ public class TileVariables : GridAligned
     public Vector2Int GridPosition { get { return gridPosition; } }
     public bool IsActive { get { return isActive; } }
 
-    public void OnTriggerEnter(Collider collision)
-    {
+    private Stack<bool> moveStates;
+
+    private void Start() {
+        moveStates = new Stack<bool>();
+    }
+
+    public void OnTriggerEnter(Collider collision) {
         int dieFace = collision.gameObject.GetComponent<PlayerDieRotation>().getActiveFace();
         Vector3Int currentCell = new Vector3Int(GridPosition.x, GridPosition.y - 1, 0);
 
         Tile tile = ScriptableObject.CreateInstance<Tile>();
 
-        if (dieFace == victoryNum)
-        {
+        if(dieFace == victoryNum) {
             tile.sprite = activeSprites[victoryNum - 1];
             tilemap.SetTile(currentCell, tile);
             isActive = true;
             levelGrid.GetComponent<VictoryCheck>().CheckIfWin();
-        }
-        else if (!isPermanent)
-        {
+        } else if(!isPermanent) {
             tile.sprite = inactiveSprites[victoryNum - 1];
             tilemap.SetTile(currentCell, tile);
             isActive = false;
         }
+    }
+
+    protected override void addMoveState() {
+        moveStates.Push(isActive);
+    }
+
+    protected override void undoLastMove() {
+        bool lastState = moveStates.Pop();
+
+        isActive = lastState;
     }
 }
