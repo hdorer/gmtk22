@@ -749,31 +749,7 @@ MonoBehaviour:
       m_Calls: []
   undoLastMoveEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8669249871199678002}
-        m_TargetAssemblyTypeName: PlayerDieRotation, Assembly-CSharp
-        m_MethodName: undoLastMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8669249871199678001}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: undoLastMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1832869160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,25 +1306,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
---- !u!114 &8669249871199678001 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8669249872399612374, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
-  m_PrefabInstance: {fileID: 8669249871199678000}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34fa30bb300fb474da7fff55c8a772a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8669249871199678002 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8669249872399612371, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
-  m_PrefabInstance: {fileID: 8669249871199678000}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 671ca5a607d5fbe4bbe19e27a95e2c41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
