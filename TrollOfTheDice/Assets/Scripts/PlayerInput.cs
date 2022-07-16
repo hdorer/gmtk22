@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,12 @@ public class PlayerInput : MonoBehaviour {
     private void Update() {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+
+        foreach(KeyCode code in Enum.GetValues(typeof(KeyCode))) {
+            if(Input.GetKeyDown(code)) {
+                Debug.Log("key: " + code);
+            }
+        }
 
         // temporary movement code
         if(verticalDown(vertical)) {
@@ -76,14 +83,14 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private bool horizontalDown(float horizontal) {
-        if(horizontal != 0 && horizontal != oldHorizontal) {
+        if(horizontal != 0 && oldHorizontal == 0) {
             return true;
         }
         return false;
     }
 
     private bool verticalDown(float vertical) {
-        if(vertical != 0 && vertical != oldVertical) {
+        if(vertical != 0 && oldVertical == 0) {
             return true;
         }
         return false;
