@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,10 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
     PlayerMovement movement;
     PlayerDieRotation rotation;
-    
     private bool canRotate;
     public bool CanRotate { set { canRotate = value; } }
+
+    float oldHorizontal, oldVertical;
 
     private bool isUndoing;
     public bool IsUndoing { get { return isUndoing; } }
@@ -20,48 +22,41 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void Update() {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        foreach(KeyCode code in Enum.GetValues(typeof(KeyCode))) {
+            if(Input.GetKeyDown(code)) {
+                Debug.Log("key: " + code);
+            }
+        }
+
         // temporary movement code
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
+        if(verticalDown(vertical)) {
             isUndoing = false;
 
-            if (movement.move(0, 1)) {
-                rotation.rotateOnMove(0, 1);
+            if (movement.move(0, (int)Mathf.Sign(vertical))) {
+                rotation.rotateOnMove(0, (int)Mathf.Sign(vertical));
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
-        if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
+        if(horizontalDown(horizontal)) {
             isUndoing = false;
 
-            if (movement.move(0, -1)) {
-                rotation.rotateOnMove(0, -1);
-                undoEvents.addMoveStateEvent.Invoke();
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
-            isUndoing = false;
-
-            if (movement.move(-1, 0)) {
-                rotation.rotateOnMove(1, 0);
-                undoEvents.addMoveStateEvent.Invoke();
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
-            isUndoing = false;
-
-            if (movement.move(1, 0)) {
-                rotation.rotateOnMove(-1, 0);
+            if (movement.move((int)Mathf.Sign(horizontal), 0)) {
+                rotation.rotateOnMove((int)Mathf.Sign(horizontal), 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Q) && canRotate) {
+        if (Input.GetButtonDown("RotateL") && canRotate) {
             isUndoing = false;
 
             rotation.RotateCounterClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.E) && canRotate) {
+        if (Input.GetButtonDown("RotateR") && canRotate) {
             isUndoing = false;
 
             rotation.RotateClockwise();
@@ -69,15 +64,35 @@ public class PlayerInput : MonoBehaviour {
             undoEvents.addMoveStateEvent.Invoke();
         }
 
-        if(Input.GetKeyDown(KeyCode.Backspace)) {
+        if(Input.GetButtonDown("Undo")) {
             isUndoing = true;
             undoEvents.undoLastMoveEvent.Invoke();
         }
+        if(Input.GetButtonDown("Restart")) {
+            undoEvents.restart();
+        }
+
+        oldHorizontal = horizontal;
+        oldVertical = vertical;
     }
 
     private void NextTurn()
     {
         rotation.getActiveFace();
 
+    }
+
+    private bool horizontalDown(float horizontal) {
+        if(horizontal != 0 && oldHorizontal == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private bool verticalDown(float vertical) {
+        if(vertical != 0 && oldVertical == 0) {
+            return true;
+        }
+        return false;
     }
 }
