@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class UIPanelClass : MonoBehaviour
+{
+    private TextMeshPro text;
+    [SerializeField] private string panelType;
+    private UIController controller;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        controller = GameObject.Find("MainUI").GetComponent<UIController>();
+        text = this.gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUI>();
+
+        UpdateText();
+    }
+
+    public void UpdateText()
+    {
+        if (controller != null)
+        {
+            if (panelType == "turns") { text.text = "Current Turn: " + controller.CurrentTurn.ToString(); }
+            else if (panelType == "mood") { text.text = "Current Mood: " + controller.CurrentMood.ToString(); }
+        }
+        else { Debug.Log("ERROR: UI controller not found!!"); }
+    }
+}

@@ -79,7 +79,7 @@ public class PlayerInput : MonoBehaviour {
     private void NextTurn()
     {
         rotation.getActiveFace();
-
+        GameObject.Find("MainUI").GetComponent<UIController>().AddTurn();
     }
 
     private bool horizontalDown(float horizontal) {
