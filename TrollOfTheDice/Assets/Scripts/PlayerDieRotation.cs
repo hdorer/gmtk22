@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDieRotation : MonoBehaviour {
+    private struct Antirotate {
+        public int x, y, z;
+        
+        public Antirotate(int x, int y, int z) {
+            this.x = x;
+            this.y = 0;
+            this.z = z;
+        }
+    }
+
     [SerializeField] private Transform[] sides;
+    private Stack<Antirotate> antirotates;
+
+    private void Start() {
+        antirotates = new Stack<Antirotate>();
+    }
 
     public void rotateOnMove(int x, int z) {
         transform.Rotate(90 * z, 0, 0, Space.World);
         transform.Rotate(0, 0, -90 * x, Space.World);
+
+        antirotates.Push(new Antirotate(-x, 0, -z));
     }
 
     public int getActiveFace() {
@@ -23,6 +40,19 @@ public class PlayerDieRotation : MonoBehaviour {
         return 0;
     }
 
-    public void RotateClockwise() { transform.Rotate(0, 90, 0, Space.World); }
-    public void RotateCounterClockwise() { transform.Rotate(0, -90, 0, Space.World); }
+    public void RotateClockwise() {
+        transform.Rotate(0, 90, 0, Space.World);
+        antirotates.Push(new Antirotate(0, -90, 0));
+
+    }
+
+    public void RotateCounterClockwise() {
+        transform.Rotate(0, -90, 0, Space.World);
+        antirotates.Push(new Antirotate(0, 90, 0));
+    }
+
+    public void undoLastMove() {
+        Antirotate lastRotation = antirotates.Pop();
+        transform.Rotate(lastRotation.x, lastRotation.y, lastRotation.z);
+    }
 }

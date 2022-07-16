@@ -1,10 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : GridAligned {
-    [SerializeField] LayerMask wallLayer;
-    
+    private struct Antimove {
+        public int x, y;
+
+        public Antimove(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    [SerializeField] private LayerMask wallLayer;
+    private Stack<Antimove> antimoves;
+
+    private void Start() {
+        antimoves = new Stack<Antimove>();
+    }
+
     public bool move(int x, int y) {
         if(Physics.Raycast(transform.position, new Vector3(x, 0, 0), 2f, wallLayer)) {
             return false;
@@ -18,6 +31,15 @@ public class PlayerMovement : GridAligned {
         gridPosition.x += x;
         gridPosition.y += y;
         snapToGrid();
+
+        antimoves.Push(new Antimove(-x, -y));
+
         return true;
+    }
+    
+    public void undoLastMove() {
+        Antimove lastMove = antimoves.Pop();
+
+        move(lastMove.x, lastMove.y);
     }
 }
