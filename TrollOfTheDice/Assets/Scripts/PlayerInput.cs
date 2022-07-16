@@ -43,9 +43,6 @@ public class PlayerInput : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) && canRotate) { rotation.RotateClockwise(); }
     }
 
-    public void EnableRotate() { canRotate = true; }
-    public void DisableRotate() { canRotate = false; }
-
     private void NextTurn()
     {
         rotation.getActiveFace();
