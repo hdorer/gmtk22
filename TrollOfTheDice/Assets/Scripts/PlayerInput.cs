@@ -37,4 +37,10 @@ public class PlayerInput : MonoBehaviour {
             }
         }
     }
+
+    private void NextTurn()
+    {
+        rotation.getActiveFace();
+
+    }
 }
