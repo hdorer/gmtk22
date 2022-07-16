@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour {
     PlayerDieRotation rotation;
     
     private bool canRotate;
+    public bool CanRotate { set { canRotate = value; } }
 
     [SerializeField] private UndoEvents undoEvents;
 
@@ -44,10 +45,12 @@ public class PlayerInput : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.Q) && canRotate) {
             rotation.RotateCounterClockwise();
+            movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
         if (Input.GetKeyDown(KeyCode.E) && canRotate) {
             rotation.RotateClockwise();
+            movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
 
@@ -55,9 +58,6 @@ public class PlayerInput : MonoBehaviour {
             undoEvents.undoLastMoveEvent.Invoke();
         }
     }
-
-    public void EnableRotate() { canRotate = true; }
-    public void DisableRotate() { canRotate = false; }
 
     private void NextTurn()
     {

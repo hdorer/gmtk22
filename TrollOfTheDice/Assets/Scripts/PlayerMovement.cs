@@ -26,8 +26,6 @@ public class PlayerMovement : GridAligned {
             if(Physics.Raycast(transform.position, new Vector3(0, 0, y), 2f, wallLayer)) {
                 return false;
             }
-
-            gameObject.GetComponent<PlayerInput>().DisableRotate();
         }
 
         gridPosition.x += x;
@@ -39,6 +37,10 @@ public class PlayerMovement : GridAligned {
         }
 
         return true;
+    }
+
+    public void addNeutralAntimove() {
+        antimoves.Push(new Antimove(0, 0));
     }
     
     public void undoLastMove() {

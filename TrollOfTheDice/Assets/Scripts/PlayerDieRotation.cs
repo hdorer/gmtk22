@@ -8,7 +8,7 @@ public class PlayerDieRotation : MonoBehaviour {
         
         public Antirotate(int x, int y, int z) {
             this.x = x;
-            this.y = 0;
+            this.y = y;
             this.z = z;
         }
     }
@@ -52,6 +52,6 @@ public class PlayerDieRotation : MonoBehaviour {
 
     public void undoLastMove() {
         Antirotate lastRotation = antirotates.Pop();
-        transform.Rotate(lastRotation.x, lastRotation.y, lastRotation.z);
+        transform.Rotate(lastRotation.x, lastRotation.y, lastRotation.z, Space.World);
     }
 }
