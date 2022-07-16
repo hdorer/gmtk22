@@ -17,27 +17,24 @@ public class PlayerInput : MonoBehaviour {
 
         // temporary movement code
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
-            movement.move(0, 1);
-            rotation.rotateOnMove(0, 1);
-            rotation.getActiveFace();
+            if(movement.move(0, 1)) {
+                rotation.rotateOnMove(0, 1);
+            }
         }
         if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
-            movement.move(0, -1);
-            rotation.rotateOnMove(0, -1);
-
-            rotation.getActiveFace();
+            if(movement.move(0, -1)) {
+                rotation.rotateOnMove(0, -1);
+            }
         }
         if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
-            movement.move(-1, 0);
-            rotation.rotateOnMove(-1, 0);
-
-            rotation.getActiveFace();
+            if(movement.move(-1, 0)) {
+                rotation.rotateOnMove(-1, 0);
+            }
         }
         if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
-            movement.move(1, 0);
-            rotation.rotateOnMove(1, 0);
-
-            rotation.getActiveFace();
+            if(movement.move(1, 0)) {
+                rotation.rotateOnMove(1, 0);
+            }
         }
     }
 }

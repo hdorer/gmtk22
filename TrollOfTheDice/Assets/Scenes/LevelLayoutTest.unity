@@ -482,6 +482,10 @@ PrefabInstance:
       propertyPath: levelGrid
       value: 
       objectReference: {fileID: 830532235}
+    - target: {fileID: 8669249872399612374, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
 --- !u!1001 &740496330
