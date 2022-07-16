@@ -311,6 +311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1814178282}
   - component: {fileID: 1814178281}
+  - component: {fileID: 1814178283}
   m_Layer: 0
   m_Name: LevelGrid
   m_TagString: Untagged
@@ -345,6 +346,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1814178283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814178280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86663dfbffcc8e74fb7fdf138c2cf7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winners:
+  - {fileID: 2100311094}
+  nextScene: DieRotation
+--- !u!114 &2100311094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3831686652457070081, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
+  m_PrefabInstance: {fileID: 2500889679293160372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2426315f2a4ca984f9e18ab00f168239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2500889679293160372
 PrefabInstance:
   m_ObjectHideFlags: 0
