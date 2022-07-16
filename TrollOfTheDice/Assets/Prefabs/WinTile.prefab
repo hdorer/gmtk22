@@ -72,3 +72,18 @@ MonoBehaviour:
   victoryNum: 4
   isActive: 0
   isPermanent: 0
+  tilemap: {fileID: 0}
+  activeSprites:
+  - {fileID: 1838681752, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: 1102686743, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: -237534009, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: -1711348495, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: 697106203, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: -1576960747, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  inactiveSprites:
+  - {fileID: 289654837, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: 671995213, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: 1654411507, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: 2081152474, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: -888299217, guid: 349756a94b80be84c8469641f468982c, type: 3}
+  - {fileID: -1430814061, guid: 349756a94b80be84c8469641f468982c, type: 3}

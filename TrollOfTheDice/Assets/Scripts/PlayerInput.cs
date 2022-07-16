@@ -11,9 +11,6 @@ public class PlayerInput : MonoBehaviour {
 
     float oldHorizontal, oldVertical;
 
-    private bool isUndoing;
-    public bool IsUndoing { get { return isUndoing; } }
-
     [SerializeField] private UndoEvents undoEvents;
 
     private void Start() {
@@ -33,45 +30,33 @@ public class PlayerInput : MonoBehaviour {
 
         // temporary movement code
         if(verticalDown(vertical)) {
-            isUndoing = false;
-
-            if (movement.move(0, (int)Mathf.Sign(vertical))) {
-                NextTurn();
+            if(movement.move(0, (int)Mathf.Sign(vertical))) {
                 rotation.rotateOnMove(0, (int)Mathf.Sign(vertical));
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
         if(horizontalDown(horizontal)) {
-            isUndoing = false;
-
-            if (movement.move((int)Mathf.Sign(horizontal), 0))
-            {
-                NextTurn();
+            if(movement.move((int)Mathf.Sign(horizontal), 0)) {
                 rotation.rotateOnMove((int)Mathf.Sign(horizontal), 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
-        
-        if (Input.GetButtonDown("RotateL") && canRotate) {
-            isUndoing = false;
-            NextTurn();
 
+        if(Input.GetButtonDown("RotateL") && canRotate) {
             rotation.RotateCounterClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
-        if (Input.GetButtonDown("RotateR") && canRotate) {
-            isUndoing = false;
-            NextTurn();
-
+        if(Input.GetButtonDown("RotateR") && canRotate) {
             rotation.RotateClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
 
         if(Input.GetButtonDown("Undo")) {
-            isUndoing = true;
             undoEvents.undoLastMoveEvent.Invoke();
+            movement.undoLastMove();
+            rotation.undoLastMove();
         }
         if(Input.GetButtonDown("Restart")) {
             undoEvents.restart();
@@ -81,10 +66,9 @@ public class PlayerInput : MonoBehaviour {
         oldVertical = vertical;
     }
 
-    private void NextTurn()
-    {
+    private void NextTurn() {
         rotation.getActiveFace();
-        GameObject.Find("MainUI").GetComponent<UIController>().AddTurn();
+
     }
 
     private bool horizontalDown(float horizontal) {
