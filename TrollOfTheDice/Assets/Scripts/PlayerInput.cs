@@ -41,7 +41,7 @@ public class PlayerInput : MonoBehaviour {
             isUndoing = false;
 
             if (movement.move(-1, 0)) {
-                rotation.rotateOnMove(-1, 0);
+                rotation.rotateOnMove(1, 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
@@ -49,7 +49,7 @@ public class PlayerInput : MonoBehaviour {
             isUndoing = false;
 
             if (movement.move(1, 0)) {
-                rotation.rotateOnMove(1, 0);
+                rotation.rotateOnMove(-1, 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
