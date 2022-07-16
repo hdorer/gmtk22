@@ -11,9 +11,6 @@ public class PlayerInput : MonoBehaviour {
 
     float oldHorizontal, oldVertical;
 
-    private bool isUndoing;
-    public bool IsUndoing { get { return isUndoing; } }
-
     [SerializeField] private UndoEvents undoEvents;
 
     private void Start() {
@@ -67,6 +64,8 @@ public class PlayerInput : MonoBehaviour {
         if(Input.GetButtonDown("Undo")) {
             isUndoing = true;
             undoEvents.undoLastMoveEvent.Invoke();
+            movement.undoLastMove();
+            rotation.undoLastMove();
         }
         if(Input.GetButtonDown("Restart")) {
             undoEvents.restart();
