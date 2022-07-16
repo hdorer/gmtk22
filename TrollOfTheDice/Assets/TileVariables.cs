@@ -14,9 +14,10 @@ public class TileVariables : GridAligned
     {
         int dieFace = collision.gameObject.GetComponent<PlayerDieRotation>().getActiveFace();
 
-        Debug.Log(dieFace);
-
-        if (dieFace == victoryNum) { isActive = true; }
+        if (dieFace == victoryNum) { 
+            isActive = true;
+            levelGrid.GetComponent<VictoryCheck>().CheckIfWin();
+        }
         else if (!isPermanent) { isActive = false; }
     }
 }
