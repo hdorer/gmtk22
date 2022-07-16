@@ -3271,6 +3271,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6073210491775096317, guid: a12246f2e8bd67e4ba8c1e0a23128f51, type: 3}
+      propertyPath: m_margin.z
+      value: -0.41619873
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073210491775096318, guid: a12246f2e8bd67e4ba8c1e0a23128f51, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 195.0191
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073210491775096318, guid: a12246f2e8bd67e4ba8c1e0a23128f51, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6.0917
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a12246f2e8bd67e4ba8c1e0a23128f51, type: 3}
 --- !u!1001 &8669249871199678000

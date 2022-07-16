@@ -21,7 +21,7 @@ public class UIController : MonoBehaviour
 
         if (currentTurn % 3 == 0)
         {
-            int rand = Random.Range(0, 5);
+            int rand = Random.Range(0, 15);
 
             switch (rand)
             {
@@ -30,6 +30,16 @@ public class UIController : MonoBehaviour
                 case 2: currentMood = "Enthused"; break;
                 case 3: currentMood = "Meritocratic"; break;
                 case 4: currentMood = "Perturbed"; break;
+                case 5: currentMood = "Wistful"; break;
+                case 6: currentMood = "Contemplative"; break;
+                case 7: currentMood = "Irritated"; break;
+                case 8: currentMood = "Ultra-Pensive"; break;
+                case 9: currentMood = "Melancholy"; break;
+                case 10: currentMood = "Glowering"; break;
+                case 11: currentMood = "Duplicitous"; break;
+                case 12: currentMood = "Detroit"; break;
+                case 13: currentMood = "Pondering"; break;
+                case 14: currentMood = "Ruminant"; break;
             }
         }
 
