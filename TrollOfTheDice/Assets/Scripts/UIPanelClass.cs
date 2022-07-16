@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIPanelClass : MonoBehaviour
 {
-    private TextMeshPro text;
+    private TextMeshProUGUI text;
     [SerializeField] private string panelType;
     private UIController controller;
 
@@ -13,7 +13,7 @@ public class UIPanelClass : MonoBehaviour
     void Start()
     {
         controller = GameObject.Find("MainUI").GetComponent<UIController>();
-        text = this.gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUI>();
+        text = this.gameObject.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
 
         UpdateText();
     }

@@ -36,6 +36,7 @@ public class PlayerInput : MonoBehaviour {
             isUndoing = false;
 
             if (movement.move(0, (int)Mathf.Sign(vertical))) {
+                NextTurn();
                 rotation.rotateOnMove(0, (int)Mathf.Sign(vertical));
                 undoEvents.addMoveStateEvent.Invoke();
             }
@@ -43,7 +44,9 @@ public class PlayerInput : MonoBehaviour {
         if(horizontalDown(horizontal)) {
             isUndoing = false;
 
-            if (movement.move((int)Mathf.Sign(horizontal), 0)) {
+            if (movement.move((int)Mathf.Sign(horizontal), 0))
+            {
+                NextTurn();
                 rotation.rotateOnMove((int)Mathf.Sign(horizontal), 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
@@ -51,6 +54,7 @@ public class PlayerInput : MonoBehaviour {
         
         if (Input.GetButtonDown("RotateL") && canRotate) {
             isUndoing = false;
+            NextTurn();
 
             rotation.RotateCounterClockwise();
             movement.addNeutralAntimove();
@@ -58,6 +62,7 @@ public class PlayerInput : MonoBehaviour {
         }
         if (Input.GetButtonDown("RotateR") && canRotate) {
             isUndoing = false;
+            NextTurn();
 
             rotation.RotateClockwise();
             movement.addNeutralAntimove();
