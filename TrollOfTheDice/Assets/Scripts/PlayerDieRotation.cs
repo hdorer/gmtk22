@@ -22,4 +22,7 @@ public class PlayerDieRotation : MonoBehaviour {
         Debug.Log("THERE WAS A BAD ERROR");
         return 0;
     }
+
+    public void RotateClockwise() { transform.Rotate(0, 0, 90, Space.Self); }
+    public void RotateCounterClockwise() { transform.Rotate(0, 0, -90, Space.Self); }
 }

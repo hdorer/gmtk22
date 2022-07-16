@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
     PlayerMovement movement;
     PlayerDieRotation rotation;
+    private bool canRotate;
 
     private void Start() {
         movement = GetComponent<PlayerMovement>();
@@ -36,7 +37,13 @@ public class PlayerInput : MonoBehaviour {
                 rotation.rotateOnMove(1, 0);
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.Q) && canRotate) { rotation.RotateCounterClockwise(); }
+        if (Input.GetKeyDown(KeyCode.E) && canRotate) { rotation.RotateClockwise(); }
     }
+
+    public void EnableRotate() { canRotate = true; }
+    public void DisableRotate() { canRotate = false; }
 
     private void NextTurn()
     {
