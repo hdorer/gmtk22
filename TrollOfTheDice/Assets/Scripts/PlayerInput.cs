@@ -61,6 +61,9 @@ public class PlayerInput : MonoBehaviour {
             isUndoing = true;
             undoEvents.undoLastMoveEvent.Invoke();
         }
+        if(Input.GetButtonDown("Restart")) {
+            undoEvents.restart();
+        }
 
         oldHorizontal = horizontal;
         oldVertical = vertical;
