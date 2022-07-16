@@ -13,9 +13,11 @@ public class PlayerMovement : GridAligned {
 
     [SerializeField] private LayerMask wallLayer;
     private Stack<Antimove> antimoves;
+    private AudioSource[] audio;
 
     private void Start() {
         antimoves = new Stack<Antimove>();
+        audio = gameObject.GetComponents<AudioSource>();
     }
 
     public bool move(int x, int y, bool undoing = false) {
@@ -27,6 +29,8 @@ public class PlayerMovement : GridAligned {
                 return false;
             }
         }
+
+        audio[0].Play();
 
         gridPosition.x += x;
         gridPosition.y += y;
@@ -43,7 +47,10 @@ public class PlayerMovement : GridAligned {
         antimoves.Push(new Antimove(0, 0));
     }
     
-    public void undoLastMove() {
+    public void undoLastMove()
+    {
+        audio[0].Play();
+
         Antimove lastMove = antimoves.Pop();
 
         move(lastMove.x, lastMove.y, true);
