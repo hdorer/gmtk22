@@ -15,9 +15,11 @@ public class PlayerDieRotation : MonoBehaviour {
 
     [SerializeField] private Transform[] sides;
     private Stack<Antirotate> antirotates;
+    private AudioSource[] audio;
 
     private void Start() {
         antirotates = new Stack<Antirotate>();
+        audio = gameObject.GetComponents<AudioSource>();
     }
 
     public void rotateOnMove(int x, int z) {
@@ -39,13 +41,17 @@ public class PlayerDieRotation : MonoBehaviour {
         return 0;
     }
 
-    public void RotateClockwise() {
+    public void RotateClockwise()
+    {
+        audio[1].Play();
         transform.Rotate(0, 90, 0, Space.World);
         antirotates.Push(new Antirotate(0, -90, 0));
 
     }
 
-    public void RotateCounterClockwise() {
+    public void RotateCounterClockwise()
+    {
+        audio[1].Play();
         transform.Rotate(0, -90, 0, Space.World);
         antirotates.Push(new Antirotate(0, 90, 0));
     }
