@@ -17,6 +17,8 @@ public class TileVariables : Undoable {
 
     private void Start() {
         moveStates = new Stack<bool>();
+
+        updateTileColor();
     }
 
     public void OnTriggerEnter(Collider collision) {

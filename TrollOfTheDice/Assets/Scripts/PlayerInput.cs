@@ -30,24 +30,24 @@ public class PlayerInput : MonoBehaviour {
 
         // temporary movement code
         if(verticalDown(vertical)) {
-            if (movement.move(0, (int)Mathf.Sign(vertical))) {
+            if(movement.move(0, (int)Mathf.Sign(vertical))) {
                 rotation.rotateOnMove(0, (int)Mathf.Sign(vertical));
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
         if(horizontalDown(horizontal)) {
-            if (movement.move((int)Mathf.Sign(horizontal), 0)) {
+            if(movement.move((int)Mathf.Sign(horizontal), 0)) {
                 rotation.rotateOnMove((int)Mathf.Sign(horizontal), 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
-        
-        if (Input.GetButtonDown("RotateL") && canRotate) {
+
+        if(Input.GetButtonDown("RotateL") && canRotate) {
             rotation.RotateCounterClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
-        if (Input.GetButtonDown("RotateR") && canRotate) {
+        if(Input.GetButtonDown("RotateR") && canRotate) {
             rotation.RotateClockwise();
             movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
@@ -66,8 +66,7 @@ public class PlayerInput : MonoBehaviour {
         oldVertical = vertical;
     }
 
-    private void NextTurn()
-    {
+    private void NextTurn() {
         rotation.getActiveFace();
 
     }
