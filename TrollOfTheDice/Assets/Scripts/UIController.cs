@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
         if (currentTurn % 3 == 0)
         {
             int rand = Random.Range(0, 5);
+
             switch (rand)
             {
                 case 0: currentMood = "Agglomerated"; break;

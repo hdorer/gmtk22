@@ -23,7 +23,7 @@ public class UIPanelClass : MonoBehaviour
         if (controller != null)
         {
             if (panelType == "turns") { text.text = "Current Turn: " + controller.CurrentTurn.ToString(); }
-            else if (panelType == "mood") { text.text = "Current Mood: " + controller.CurrentMood.ToString(); }
+            else if (panelType == "mood") { text.text = "Current Mood: " + controller.CurrentMood; }
         }
         else { Debug.Log("ERROR: UI controller not found!!"); }
     }
