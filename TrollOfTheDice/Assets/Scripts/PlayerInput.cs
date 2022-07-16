@@ -45,10 +45,12 @@ public class PlayerInput : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.Q) && canRotate) {
             rotation.RotateCounterClockwise();
+            movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
         if (Input.GetKeyDown(KeyCode.E) && canRotate) {
             rotation.RotateClockwise();
+            movement.addNeutralAntimove();
             undoEvents.addMoveStateEvent.Invoke();
         }
 
