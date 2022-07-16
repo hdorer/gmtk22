@@ -19,25 +19,28 @@ public class PlayerInput : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
             movement.move(0, 1);
             rotation.rotateOnMove(0, 1);
-            rotation.getActiveFace();
+            NextTurn();
         }
         if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
             movement.move(0, -1);
             rotation.rotateOnMove(0, -1);
-
-            rotation.getActiveFace();
+            NextTurn();
         }
         if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
             movement.move(-1, 0);
             rotation.rotateOnMove(-1, 0);
-
-            rotation.getActiveFace();
+            NextTurn();
         }
         if(Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
             movement.move(1, 0);
             rotation.rotateOnMove(1, 0);
-
-            rotation.getActiveFace();
+            NextTurn();
         }
+    }
+
+    private void NextTurn()
+    {
+        rotation.getActiveFace();
+
     }
 }
