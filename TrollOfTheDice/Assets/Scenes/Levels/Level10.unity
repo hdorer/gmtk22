@@ -3018,6 +3018,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 892333672152166702, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 13970b3e2f825e64dbcb99f2b6c74790, type: 3}
+    - target: {fileID: 892333672152166702, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2750074372805475968, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
       propertyPath: m_Name
       value: PlayerDie
