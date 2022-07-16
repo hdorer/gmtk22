@@ -327,7 +327,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814178280}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 1}
+  m_CellSize: {x: 1.4, y: 1.4, z: 1.4}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -406,15 +406,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -422,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 373018509576119820, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -460,6 +464,22 @@ PrefabInstance:
       propertyPath: levelGrid
       value: 
       objectReference: {fileID: 1814178281}
+    - target: {fileID: 3831686652457070081, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
+      propertyPath: gridPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735174739247184016, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
+      propertyPath: m_Size.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735174739247184016, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
+      propertyPath: m_Size.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735174739247184016, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
+      propertyPath: m_Size.z
+      value: 1.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
 --- !u!1001 &8669249871199678000
