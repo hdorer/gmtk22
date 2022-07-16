@@ -18,21 +18,25 @@ public class PlayerMovement : GridAligned {
         antimoves = new Stack<Antimove>();
     }
 
-    public bool move(int x, int y) {
-        if(Physics.Raycast(transform.position, new Vector3(x, 0, 0), 2f, wallLayer)) {
-            return false;
-        }
-        if(Physics.Raycast(transform.position, new Vector3(0, 0, y), 2f, wallLayer)) {
-            return false;
-        }
+    public bool move(int x, int y, bool undoing = false) {
+        if(!undoing) {
+            if(Physics.Raycast(transform.position, new Vector3(x, 0, 0), 2f, wallLayer)) {
+                return false;
+            }
+            if(Physics.Raycast(transform.position, new Vector3(0, 0, y), 2f, wallLayer)) {
+                return false;
+            }
 
-        gameObject.GetComponent<PlayerInput>().DisableRotate();
+            gameObject.GetComponent<PlayerInput>().DisableRotate();
+        }
 
         gridPosition.x += x;
         gridPosition.y += y;
         snapToGrid();
 
-        antimoves.Push(new Antimove(-x, -y));
+        if(!undoing) {
+            antimoves.Push(new Antimove(-x, -y));
+        }
 
         return true;
     }
@@ -40,6 +44,6 @@ public class PlayerMovement : GridAligned {
     public void undoLastMove() {
         Antimove lastMove = antimoves.Pop();
 
-        move(lastMove.x, lastMove.y);
+        move(lastMove.x, lastMove.y, true);
     }
 }

@@ -16,9 +16,6 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void Update() {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
         // temporary movement code
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
             if(movement.move(0, 1)) {

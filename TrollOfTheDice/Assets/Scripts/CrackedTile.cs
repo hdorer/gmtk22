@@ -8,13 +8,21 @@ public class CrackedTile : GridAligned
     public bool IsBroken { get { return isBroken; } }
 
     private Stack<bool> moveStates;
+    private bool ignoreTriggerExit;
 
     private void Start() {
         moveStates = new Stack<bool>();
     }
 
-    public void OnTriggerExit(Collider collision)
-    {
+    private void Update() {
+        ignoreTriggerExit = false;
+    }
+
+    public void OnTriggerExit(Collider collision) {
+        if(ignoreTriggerExit) {
+            return;
+        }
+
         isBroken = true;
         gameObject.layer = LayerMask.NameToLayer("Wall");
     }
@@ -24,8 +32,8 @@ public class CrackedTile : GridAligned
     }
 
     public void undoLastMove() {
+        ignoreTriggerExit = true;
         bool lastState = moveStates.Pop();
-
         isBroken = lastState;
     }
 }
