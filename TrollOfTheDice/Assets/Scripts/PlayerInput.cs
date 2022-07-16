@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour {
     PlayerMovement movement;
     PlayerDieRotation rotation;
     private bool canRotate;
+    public bool CanRotate { set { canRotate = value; } }
 
     private void Start() {
         movement = GetComponent<PlayerMovement>();

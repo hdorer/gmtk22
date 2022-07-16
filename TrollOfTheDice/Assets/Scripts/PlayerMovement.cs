@@ -13,8 +13,6 @@ public class PlayerMovement : GridAligned {
             return false;
         }
 
-        gameObject.GetComponent<PlayerInput>().DisableRotate();
-
         gridPosition.x += x;
         gridPosition.y += y;
         snapToGrid();
