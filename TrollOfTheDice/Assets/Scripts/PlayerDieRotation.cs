@@ -43,7 +43,8 @@ public class PlayerDieRotation : MonoBehaviour {
 
     public void RotateClockwise()
     {
-        audio[1].Play();
+        PitchRandomizer.PlaySoundPitchRandomized(audio[1], 1.0f, 1.2f);
+        //audio[1].Play();
         transform.Rotate(0, 90, 0, Space.World);
         antirotates.Push(new Antirotate(0, -90, 0));
 
@@ -51,7 +52,8 @@ public class PlayerDieRotation : MonoBehaviour {
 
     public void RotateCounterClockwise()
     {
-        audio[1].Play();
+        PitchRandomizer.PlaySoundPitchRandomized(audio[1], 0.8f, 1.0f);
+        //audio[1].Play();
         transform.Rotate(0, -90, 0, Space.World);
         antirotates.Push(new Antirotate(0, 90, 0));
     }

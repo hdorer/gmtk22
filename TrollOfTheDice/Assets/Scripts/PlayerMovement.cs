@@ -30,7 +30,7 @@ public class PlayerMovement : GridAligned {
             }
         }
 
-        audio[0].Play();
+        PitchRandomizer.PlaySoundPitchRandomized(audio[0], 0.8f, 1.2f);
 
         gridPosition.x += x;
         gridPosition.y += y;
@@ -49,7 +49,9 @@ public class PlayerMovement : GridAligned {
     
     public void undoLastMove()
     {
-        audio[0].Play();
+        //Allows for smoother audio playing
+        PitchRandomizer.PlaySoundPitchRandomized(audio[0], 1.2f, 1.6f);
+        //audio[0].Play();
 
         Antimove lastMove = antimoves.Pop();
 
