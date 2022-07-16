@@ -2,27 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrackedTile : GridAligned
-{
+public class CrackedTile : Undoable {
     private bool isBroken;
     public bool IsBroken { get { return isBroken; } }
 
-    public void OnTriggerExit(Collider collision) {
-        if(collision.gameObject.GetComponent<PlayerInput>().IsUndoing) {
-            return;
-        }
-
-        isBroken = true;
-        gameObject.layer = LayerMask.NameToLayer("Wall");
-    }
-
-    public void OnTriggerEnter(Collider collision)
-    {
-        isBroken = false;
-        gameObject.layer = LayerMask.NameToLayer("Default");
-    }
-
-    /*
     private Stack<bool> moveStates;
     private bool ignoreTriggerExit;
 
@@ -33,15 +16,23 @@ public class CrackedTile : GridAligned
     private void Update() {
         ignoreTriggerExit = false;
     }
-    
 
-    public void addMoveState() {
+    public void OnTriggerExit(Collider collision) {
+        if(ignoreTriggerExit) {
+            return;
+        }
+
+        isBroken = true;
+        gameObject.layer = LayerMask.NameToLayer("Wall");
+    }
+
+    protected override void addMoveState() {
         moveStates.Push(isBroken);
     }
 
-    public void undoLastMove() {
+    protected override void undoLastMove() {
         ignoreTriggerExit = true;
         bool lastState = moveStates.Pop();
         isBroken = lastState;
-    }*/
+    }
 }
