@@ -17,18 +17,18 @@ public class TileVariables : GridAligned
     public void OnTriggerEnter(Collider collision)
     {
         int dieFace = collision.gameObject.GetComponent<PlayerDieRotation>().getActiveFace();
-        //Vector3Int currentCell = tilemap.WorldToCell(transform.position);
+        Vector3Int currentCell = new Vector3Int(GridPosition.x,GridPosition.y - 1,0);
 
         if (dieFace == victoryNum)
         {
             tilemap.SetTile(currentCell, activeTile);
             isActive = true;
-            //levelGrid.GetComponent<VictoryCheck>().CheckIfWin();
+            levelGrid.GetComponent<VictoryCheck>().CheckIfWin();
         }
         else if (!isPermanent)
         {
             tilemap.SetTile(currentCell, inactiveTile);
-            //isActive = false;
+            isActive = false;
         }
     }
 }

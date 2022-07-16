@@ -1792,7 +1792,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832869160}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.356, y: -0, z: 1.172}
+  m_LocalPosition: {x: -0.356, y: -0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2478,7 +2478,7 @@ PrefabInstance:
     - target: {fileID: 3831686652457070081, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: activeTile
       value: 
-      objectReference: {fileID: 11400000, guid: 34125333fe74bd54796eba340674181d, type: 2}
+      objectReference: {fileID: 11400000, guid: 6afbb760292e272439b445674d9969f1, type: 2}
     - target: {fileID: 3831686652457070081, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: victoryNum
       value: 4
@@ -2490,7 +2490,7 @@ PrefabInstance:
     - target: {fileID: 3831686652457070081, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: inactiveTile
       value: 
-      objectReference: {fileID: 11400000, guid: 6afbb760292e272439b445674d9969f1, type: 2}
+      objectReference: {fileID: 11400000, guid: 34125333fe74bd54796eba340674181d, type: 2}
     - target: {fileID: 3831686652457070081, guid: 83b6b4459c259be43b26b6f27af5f20a, type: 3}
       propertyPath: gridPosition.x
       value: 0
