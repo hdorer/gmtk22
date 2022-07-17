@@ -29,6 +29,8 @@ public class CrackedTile : GameTile {
         gameObject.layer = LayerMask.NameToLayer("Wall");
         Debug.Log("Player exits trigger, isBroken is " + isBroken + ", layer set to Wall");
 
+        PitchRandomizer.PlaySoundPitchRandomized(gameObject.GetComponent<AudioSource>(), 1.2f, 1.6f); 
+
         updateTileSprite();
     }
 
