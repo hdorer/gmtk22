@@ -7,23 +7,21 @@ public class CrackedTile : Undoable {
     public bool IsBroken { get { return isBroken; } }
 
     private Stack<bool> moveStates;
-    private bool ignoreTriggerExit;
 
     private void Start() {
         moveStates = new Stack<bool>();
     }
 
-    private void Update() {
-        ignoreTriggerExit = false;
-    }
-
     public void OnTriggerExit(Collider collision) {
-        if(ignoreTriggerExit) {
+        PlayerInput pInput = collision.gameObject.GetComponent<PlayerInput>();
+        if(pInput.LastActionWasUndo) {
+            Debug.Log("Ignoring trigger exit");
             return;
         }
 
         isBroken = true;
         gameObject.layer = LayerMask.NameToLayer("Wall");
+        Debug.Log("Player exits trigger, isBroken is " + isBroken + ", layer set to Wall");
     }
 
     protected override void addMoveState() {
@@ -31,8 +29,14 @@ public class CrackedTile : Undoable {
     }
 
     protected override void undoLastMove() {
-        ignoreTriggerExit = true;
         bool lastState = moveStates.Pop();
+        Debug.Log("Last state was " + lastState);
         isBroken = lastState;
+        Debug.Log("isBroken is now " + isBroken);
+
+        if(!isBroken) {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+            Debug.Log("Layer set to Default");
+        }
     }
 }
