@@ -11,6 +11,7 @@ public class TutorialTextAnimation : MonoBehaviour
     [SerializeField] private float remainTime;
     [SerializeField] private float popOutTime;
     [SerializeField] private float alphaSpeed;
+    [SerializeField] private string controllerText;
 
     private string state = "delay";
     private float timeInState = 0;
@@ -26,6 +27,8 @@ public class TutorialTextAnimation : MonoBehaviour
 
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
         text.color = new Color(text.color.r, text.color.g, text.color.b, 0);
+
+        if (Input.GetJoystickNames().Length > 0) { text.text = controllerText; }
     }
 
     // Update is called once per frame
