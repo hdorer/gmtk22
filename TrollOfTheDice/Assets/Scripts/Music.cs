@@ -9,4 +9,9 @@ public class Music : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
     }
+
+    void Update() //esc to quit
+    {
+        if (Input.GetKeyDown("escape")) { Application.Quit(); }
+    }
 }
