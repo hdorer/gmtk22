@@ -1486,7 +1486,7 @@ MonoBehaviour:
   - {fileID: 2100311094}
   - {fileID: 1796385598}
   - {fileID: 908767857}
-  nextScene: Level6
+  nextScene: StartScreen
 --- !u!114 &1814178284
 MonoBehaviour:
   m_ObjectHideFlags: 0
