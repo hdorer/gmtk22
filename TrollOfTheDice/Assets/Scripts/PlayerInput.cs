@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour {
     PlayerMovement movement;
     PlayerDieRotation rotation;
+    private bool canMove;
     private bool canRotate;
     public bool CanRotate { set { canRotate = value; } }
 
@@ -20,7 +21,11 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
+    public void CanMove(bool move) { canMove = move; }
+
     private void Start() {
+        canMove = true;
+
         movement = GetComponent<PlayerMovement>();
         rotation = GetComponent<PlayerDieRotation>();
     }
@@ -30,7 +35,7 @@ public class PlayerInput : MonoBehaviour {
         float vertical = Input.GetAxisRaw("Vertical");
 
         // temporary movement code
-        if(verticalDown(vertical)) {
+        if(verticalDown(vertical) && canMove) {
             lastActionWasUndo = false;
             Debug.Log("lastActionWasUndo set to: " + lastActionWasUndo);
 
@@ -40,7 +45,7 @@ public class PlayerInput : MonoBehaviour {
                 undoEvents.addMoveStateEvent.Invoke();
             }
         }
-        if(horizontalDown(horizontal)) {
+        if(horizontalDown(horizontal) && canMove) {
             lastActionWasUndo = false;
             Debug.Log("lastActionWasUndo set to: " + lastActionWasUndo);
 
@@ -69,7 +74,7 @@ public class PlayerInput : MonoBehaviour {
             undoEvents.addMoveStateEvent.Invoke();
         }
 
-        if(Input.GetButtonDown("Undo")) {
+        if(Input.GetButtonDown("Undo") && canMove) {
             Debug.Log("---UNDO INITIATED---");
             GameObject.Find("MainUI").GetComponent<UIController>().SubtractTurn();
 

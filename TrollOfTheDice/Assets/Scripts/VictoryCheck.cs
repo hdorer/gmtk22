@@ -28,6 +28,9 @@ public class VictoryCheck : MonoBehaviour
     private IEnumerator Win()
     {
         winSound.Play();
+        GameObject.Find("PlayerDie").GetComponent<PlayerInput>().CanRotate = false;
+        GameObject.Find("PlayerDie").GetComponent<PlayerInput>().CanMove(false);
+
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(nextScene);
     }
