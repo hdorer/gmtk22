@@ -56,5 +56,6 @@ public class PlayerMovement : GridAligned {
         Antimove lastMove = antimoves.Pop();
 
         move(lastMove.x, lastMove.y, true);
+        Debug.Log("Player's last move undone");
     }
 }
