@@ -6,6 +6,7 @@ using UnityEngine;
 public class CameraSwitcher : MonoBehaviour {
     [SerializeField] CinemachineVirtualCamera[] cameras;
     int currentCamera = 0;
+    public bool reverseAngle { get { return currentCamera == 2 || currentCamera == 3; } }
 
     private void Start() {
         updateCameraPriorities();

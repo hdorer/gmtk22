@@ -14,18 +14,30 @@ public class PlayerDieRotation : MonoBehaviour {
     }
 
     [SerializeField] private Transform[] sides;
+    
     private Stack<Antirotate> antirotates;
-    private AudioSource[] audio;
+    
+    private AudioSource[] audioClips;
+
+    [SerializeField] CameraSwitcher cameras;
 
     private void Start() {
         antirotates = new Stack<Antirotate>();
-        audio = gameObject.GetComponents<AudioSource>();
+        audioClips = gameObject.GetComponents<AudioSource>();
     }
 
     public void rotateOnMove(int x, int z) {
-        transform.Rotate(90 * z, 0, -90 * x, Space.World);
+        int xRot = x;
+        int zRot = z;
 
-        antirotates.Push(new Antirotate(-90 * z, 0, 90 * x));
+        if(cameras.reverseAngle) {
+            xRot *= -1;
+            zRot *= -1;
+        }
+
+        transform.Rotate(90 * zRot, 0, -90 * xRot, Space.World);
+
+        antirotates.Push(new Antirotate(-90 * zRot, 0, 90 * xRot));
     }
 
     public int getActiveFace() {
@@ -33,7 +45,7 @@ public class PlayerDieRotation : MonoBehaviour {
         {
             float pos = sides[i].position.y;
             if (pos - gameObject.transform.position.y > 0.01) {
-                return (int)(i + 1);
+                return i + 1;
             }
         }
 
@@ -41,21 +53,30 @@ public class PlayerDieRotation : MonoBehaviour {
         return 0;
     }
 
-    public void RotateClockwise()
-    {
-        PitchRandomizer.PlaySoundPitchRandomized(audio[1], 1.0f, 1.2f);
-        //audio[1].Play();
-        transform.Rotate(0, 90, 0, Space.World);
-        antirotates.Push(new Antirotate(0, -90, 0));
+    public void RotateClockwise() {
+        PitchRandomizer.PlaySoundPitchRandomized(audioClips[1], 1.0f, 1.2f);
+
+        if(cameras.reverseAngle) {
+            transform.Rotate(0, -90, 0, Space.World);
+            antirotates.Push(new Antirotate(0, 90, 0));
+        } else {
+            transform.Rotate(0, 90, 0, Space.World);
+            antirotates.Push(new Antirotate(0, -90, 0));
+        }
 
     }
 
     public void RotateCounterClockwise()
     {
-        PitchRandomizer.PlaySoundPitchRandomized(audio[1], 0.8f, 1.0f);
-        //audio[1].Play();
-        transform.Rotate(0, -90, 0, Space.World);
-        antirotates.Push(new Antirotate(0, 90, 0));
+        PitchRandomizer.PlaySoundPitchRandomized(audioClips[1], 0.8f, 1.0f);
+
+        if(cameras.reverseAngle) {
+            transform.Rotate(0, 90, 0, Space.World);
+            antirotates.Push(new Antirotate(0, -90, 0));
+        } else {
+            transform.Rotate(0, -90, 0, Space.World);
+            antirotates.Push(new Antirotate(0, 90, 0));
+        }
     }
 
     public void undoLastMove() {

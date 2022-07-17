@@ -12,32 +12,44 @@ public class PlayerMovement : GridAligned {
     }
 
     [SerializeField] private LayerMask wallLayer;
+    
     private Stack<Antimove> antimoves;
-    private AudioSource[] audio;
+    
+    private AudioSource[] audioSources;
+
+    [SerializeField] private CameraSwitcher cameras;
 
     private void Start() {
         antimoves = new Stack<Antimove>();
-        audio = gameObject.GetComponents<AudioSource>();
+        audioSources = gameObject.GetComponents<AudioSource>();
     }
 
     public bool move(int x, int y, bool undoing = false) {
+        int xMove = x;
+        int yMove = y;
+
+        if(cameras.reverseAngle) {
+            xMove *= -1;
+            yMove *= -1;
+        }
+
         if(!undoing) {
-            if(Physics.Raycast(transform.position, new Vector3(x, 0, 0), 2f, wallLayer)) {
+            if(Physics.Raycast(transform.position, new Vector3(xMove, 0, 0), 2f, wallLayer)) {
                 return false;
             }
-            if(Physics.Raycast(transform.position, new Vector3(0, 0, y), 2f, wallLayer)) {
+            if(Physics.Raycast(transform.position, new Vector3(0, 0, yMove), 2f, wallLayer)) {
                 return false;
             }
         }
 
-        PitchRandomizer.PlaySoundPitchRandomized(audio[0], 0.8f, 1.2f);
+        PitchRandomizer.PlaySoundPitchRandomized(audioSources[0], 0.8f, 1.2f);
 
-        gridPosition.x += x;
-        gridPosition.y += y;
+        gridPosition.x += xMove;
+        gridPosition.y += yMove;
         snapToGrid();
 
         if(!undoing) {
-            antimoves.Push(new Antimove(-x, -y));
+            antimoves.Push(new Antimove(-xMove, -yMove));
         }
 
         return true;
@@ -50,7 +62,7 @@ public class PlayerMovement : GridAligned {
     public void undoLastMove()
     {
         //Allows for smoother audio playing
-        PitchRandomizer.PlaySoundPitchRandomized(audio[0], 1.2f, 1.6f);
+        PitchRandomizer.PlaySoundPitchRandomized(audioSources[0], 1.2f, 1.6f);
         //audio[0].Play();
 
         Antimove lastMove = antimoves.Pop();
