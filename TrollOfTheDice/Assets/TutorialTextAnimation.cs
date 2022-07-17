@@ -6,12 +6,13 @@ using TMPro;
 
 public class TutorialTextAnimation : MonoBehaviour
 {
+    [SerializeField] private float startDelay;
     [SerializeField] private float popInTime;
     [SerializeField] private float remainTime;
     [SerializeField] private float popOutTime;
     [SerializeField] private float alphaSpeed;
 
-    private string state = "pop in";
+    private string state = "delay";
     private float timeInState = 0;
 
     private Image i;
@@ -48,7 +49,12 @@ public class TutorialTextAnimation : MonoBehaviour
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
         }
 
-        if (timeInState > popInTime && state == "pop in")
+        else if (timeInState > startDelay && state == "delay")
+        {
+            state = "pop in";
+            timeInState = 0;
+        }
+        else if (timeInState > popInTime && state == "pop in")
         {
             state = "remain";
             timeInState = 0;
