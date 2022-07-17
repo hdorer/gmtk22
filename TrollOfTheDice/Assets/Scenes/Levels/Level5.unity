@@ -2460,7 +2460,7 @@ MonoBehaviour:
   - {fileID: 1553354134}
   - {fileID: 1932596134}
   - {fileID: 501952375}
-  nextScene: Level5a
+  nextScene: Level6
 --- !u!114 &1814178284
 MonoBehaviour:
   m_ObjectHideFlags: 0
