@@ -14,7 +14,8 @@ public class GridAligned : MonoBehaviour {
         snapToGrid();
     }
 
+    [ContextMenu("Snap to Grid")]
     protected void snapToGrid() {
-        transform.position = levelGrid.CellToLocal(new Vector3Int(gridPosition.x, 0, gridPosition.y));
+        transform.position = levelGrid.CellToLocal(new Vector3Int(gridPosition.x, gridPosition.y, 0));
     }
 }
