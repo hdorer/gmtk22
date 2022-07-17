@@ -35,6 +35,7 @@ public class PlayerInput : MonoBehaviour {
             Debug.Log("lastActionWasUndo set to: " + lastActionWasUndo);
 
             if(movement.move(0, (int)Mathf.Sign(vertical))) {
+                NextTurn();
                 rotation.rotateOnMove(0, (int)Mathf.Sign(vertical));
                 undoEvents.addMoveStateEvent.Invoke();
             }
@@ -43,7 +44,9 @@ public class PlayerInput : MonoBehaviour {
             lastActionWasUndo = false;
             Debug.Log("lastActionWasUndo set to: " + lastActionWasUndo);
 
-            if(movement.move((int)Mathf.Sign(horizontal), 0)) {
+            if(movement.move((int)Mathf.Sign(horizontal), 0))
+            {
+                NextTurn();
                 rotation.rotateOnMove((int)Mathf.Sign(horizontal), 0);
                 undoEvents.addMoveStateEvent.Invoke();
             }
@@ -66,7 +69,10 @@ public class PlayerInput : MonoBehaviour {
             undoEvents.addMoveStateEvent.Invoke();
         }
 
-        if(Input.GetButtonDown("Undo")) {
+        if(Input.GetButtonDown("Undo"))
+        {
+            GameObject.Find("MainUI").GetComponent<UIController>().SubtractTurn();
+
             Debug.Log("---UNDO INITIATED---");
 
             lastActionWasUndo = true;
@@ -86,7 +92,7 @@ public class PlayerInput : MonoBehaviour {
 
     private void NextTurn() {
         rotation.getActiveFace();
-
+        GameObject.Find("MainUI").GetComponent<UIController>().AddTurn();
     }
 
     private bool horizontalDown(float horizontal) {
