@@ -2601,6 +2601,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1814178284}
     - target: {fileID: 8669249872399612374, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
+      propertyPath: cameras
+      value: 
+      objectReference: {fileID: 153602828}
+    - target: {fileID: 8669249872399612374, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
       propertyPath: levelGrid
       value: 
       objectReference: {fileID: 1814178281}
