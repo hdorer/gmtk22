@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TileVariables : Undoable {
+public class TileVariables : GameTile {
     [SerializeField] private int victoryNum;
     [SerializeField] private bool isActive;
     public bool IsActive { get { return isActive; } }
     [SerializeField] private bool isPermanent;
-    [SerializeField] private Tilemap tilemap;
     [SerializeField] private Sprite[] activeSprites;
     [SerializeField] private Sprite[] inactiveSprites;
     public Vector2Int GridPosition { get { return gridPosition; } }
@@ -36,7 +35,7 @@ public class TileVariables : Undoable {
 
     private void updateTileColor() {
         Vector3Int currentCell = new Vector3Int(GridPosition.x, GridPosition.y - 1, 0);
-        Tile tile = ScriptableObject.CreateInstance<Tile>();
+        UnityEngine.Tilemaps.Tile tile = ScriptableObject.CreateInstance<UnityEngine.Tilemaps.Tile>();
 
         if(isActive) {
             tile.sprite = activeSprites[victoryNum - 1];

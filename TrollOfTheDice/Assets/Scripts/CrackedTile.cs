@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class CrackedTile : Undoable {
+public class CrackedTile : GameTile {
     private bool isBroken;
     public bool IsBroken { get { return isBroken; } }
 
     private Stack<bool> moveStates;
 
-    [SerializeField] Tilemap tilemap;
     [SerializeField] private Sprite intactSprite;
     [SerializeField] private Sprite brokenSprite;
 
@@ -53,7 +52,7 @@ public class CrackedTile : Undoable {
 
     private void updateTileSprite() {
         Vector3Int currentCell = new Vector3Int(gridPosition.x, gridPosition.y - 1, 0);
-        Tile tile = ScriptableObject.CreateInstance<Tile>();
+        UnityEngine.Tilemaps.Tile tile = ScriptableObject.CreateInstance<UnityEngine.Tilemaps.Tile>();
 
         if(isBroken) {
             tile.sprite = brokenSprite;
