@@ -2246,10 +2246,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8669249872399612371, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
+      propertyPath: cameras
+      value: 
+      objectReference: {fileID: 1942867860}
     - target: {fileID: 8669249872399612373, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
       propertyPath: undoEvents
       value: 
       objectReference: {fileID: 1814178284}
+    - target: {fileID: 8669249872399612374, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
+      propertyPath: cameras
+      value: 
+      objectReference: {fileID: 1942867860}
     - target: {fileID: 8669249872399612374, guid: 98b23ac03d4b8a4458128c17e95383c0, type: 3}
       propertyPath: levelGrid
       value: 
