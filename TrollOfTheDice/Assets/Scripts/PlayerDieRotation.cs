@@ -63,7 +63,6 @@ public class PlayerDieRotation : MonoBehaviour {
             transform.Rotate(0, 90, 0, Space.World);
             antirotates.Push(new Antirotate(0, -90, 0));
         }
-
     }
 
     public void RotateCounterClockwise()
