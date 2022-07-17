@@ -86,3 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelGrid: {fileID: 0}
   gridPosition: {x: 0, y: 0}
+  tilemap: {fileID: 0}
+  intactSprite: {fileID: 1648782266, guid: 51d01ef4191834a41bd77731252a5b86, type: 3}
+  brokenSprite: {fileID: 517310405, guid: 51d01ef4191834a41bd77731252a5b86, type: 3}
