@@ -8,6 +8,12 @@ public class VictoryCheck : MonoBehaviour
     [SerializeField] private TileVariables[] winners;
     [SerializeField] private string nextScene;
 
+    private AudioSource winSound;
+
+    private void Start() {
+        winSound = GetComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     public void CheckIfWin()
     {
@@ -16,11 +22,13 @@ public class VictoryCheck : MonoBehaviour
             if (!winners[i].IsActive) { return; }
         }
 
-        Win();
+        StartCoroutine(Win());
     }
 
-    public void Win()
+    private IEnumerator Win()
     {
+        winSound.Play();
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene(nextScene);
     }
 }
