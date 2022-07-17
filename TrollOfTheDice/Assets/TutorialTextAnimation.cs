@@ -9,6 +9,7 @@ public class TutorialTextAnimation : MonoBehaviour
     [SerializeField] private float popInTime;
     [SerializeField] private float remainTime;
     [SerializeField] private float popOutTime;
+    [SerializeField] private float alphaSpeed;
 
     private string state = "pop in";
     private float timeInState = 0;
@@ -29,21 +30,20 @@ public class TutorialTextAnimation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(timeInState);
         timeInState++;
 
         if (state == "pop in")
         {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a+1);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a+1);
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a+alphaSpeed);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a+alphaSpeed);
 
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y +1, gameObject.transform.position.z);
         }
 
         if (state == "pop out")
         {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a-1);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a-1);
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a- alphaSpeed);
+            text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a- alphaSpeed);
 
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
         }

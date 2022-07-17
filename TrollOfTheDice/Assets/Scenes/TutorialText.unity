@@ -1102,9 +1102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543312497a38bd24ba78b22949935f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popInTime: 60
-  remainTime: 120
+  popInTime: 45
+  remainTime: 60
   popOutTime: 60
+  alphaSpeed: 0.02
 --- !u!114 &425250522
 MonoBehaviour:
   m_ObjectHideFlags: 0
