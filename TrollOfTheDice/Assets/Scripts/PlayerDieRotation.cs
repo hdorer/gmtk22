@@ -54,7 +54,7 @@ public class PlayerDieRotation : MonoBehaviour {
     }
 
     public void RotateClockwise() {
-        PitchRandomizer.PlaySoundPitchRandomized(audioClips[1], 1.0f, 1.2f);
+        PitchRandomizer.PlaySoundPitchRandomized(audioClips[0], 1.0f, 1.2f);
 
         if(cameras.reverseAngle) {
             transform.Rotate(0, -90, 0, Space.World);
@@ -67,7 +67,7 @@ public class PlayerDieRotation : MonoBehaviour {
 
     public void RotateCounterClockwise()
     {
-        PitchRandomizer.PlaySoundPitchRandomized(audioClips[1], 0.8f, 1.0f);
+        PitchRandomizer.PlaySoundPitchRandomized(audioClips[0], 0.8f, 1.0f);
 
         if(cameras.reverseAngle) {
             transform.Rotate(0, 90, 0, Space.World);

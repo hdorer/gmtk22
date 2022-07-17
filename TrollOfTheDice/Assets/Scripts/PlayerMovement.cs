@@ -28,7 +28,7 @@ public class PlayerMovement : GridAligned {
         int xMove = x;
         int yMove = y;
 
-        if(cameras.reverseAngle) {
+        if(cameras.reverseAngle && !undoing) {
             xMove *= -1;
             yMove *= -1;
         }
