@@ -26,6 +26,7 @@ public class TileVariables : GameTile {
         if(dieFace == victoryNum) {
             isActive = true;
             levelGrid.GetComponent<VictoryCheck>().CheckIfWin();
+            PitchRandomizer.PlaySoundPitchRandomized(gameObject.GetComponent<AudioSource>(), 1.2f, 1.6f);
         } else if(!isPermanent) {
             isActive = false;
         }
