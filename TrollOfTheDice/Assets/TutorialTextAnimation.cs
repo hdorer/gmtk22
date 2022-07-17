@@ -49,7 +49,7 @@ public class TutorialTextAnimation : MonoBehaviour
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
         }
 
-        else if (timeInState > startDelay && state == "delay")
+        if (timeInState > startDelay && state == "delay")
         {
             state = "pop in";
             timeInState = 0;
@@ -64,7 +64,7 @@ public class TutorialTextAnimation : MonoBehaviour
             state = "pop out";
             timeInState = 0;
         }
-        else if (timeInState > remainTime && state == "pop out")
+        else if (timeInState > popOutTime && state == "pop out")
         {
             Destroy(gameObject);
         }
