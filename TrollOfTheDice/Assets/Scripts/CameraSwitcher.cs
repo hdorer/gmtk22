@@ -8,11 +8,15 @@ public class CameraSwitcher : MonoBehaviour {
     int currentCamera = 0;
     public bool reverseAngle { get { return currentCamera == 2 || currentCamera == 3; } }
 
+    private float oldRightStick;
+
     private void Start() {
         updateCameraPriorities();
     }
 
     private void Update() {
+        float rightStick = Input.GetAxisRaw("RotateCam");
+
         if(Input.GetButtonDown("NextCam")) {
             currentCamera++;
             if(currentCamera >= cameras.Length) {
@@ -32,6 +36,28 @@ public class CameraSwitcher : MonoBehaviour {
 
             updateCameraPriorities();
         }
+
+        if(rightStickDown(rightStick)) {
+            if(rightStick > 0) {
+                currentCamera++;
+                if(currentCamera >= cameras.Length) {
+                    currentCamera = 0;
+                }
+                Debug.Log("Current camera is " + currentCamera);
+
+                updateCameraPriorities();
+            } else if(rightStick < 0) {
+                currentCamera--;
+                if(currentCamera < 0) {
+                    currentCamera = cameras.Length - 1;
+                }
+                Debug.Log("Current camera is " + currentCamera);
+
+                updateCameraPriorities();
+            }
+        }
+
+        oldRightStick = rightStick;
     }
 
     private void updateCameraPriorities() {
@@ -44,5 +70,12 @@ public class CameraSwitcher : MonoBehaviour {
 
             Debug.Log("Camera " + i + " has priority " + cameras[i].Priority);
         }
+    }
+
+    private bool rightStickDown(float rightStickAxis) {
+        if(rightStickAxis != 0 && oldRightStick == 0) {
+            return true;
+        }
+        return false;
     }
 }
