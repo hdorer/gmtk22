@@ -466,6 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8537a78584d6e774393000cef36860a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indicator: {fileID: 796519157}
+  options:
+  - {fileID: 340729404}
+  - {fileID: 533962278}
 --- !u!114 &410168655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,7 +1040,6 @@ GameObject:
   - component: {fileID: 1143649058}
   - component: {fileID: 1143649060}
   - component: {fileID: 1143649059}
-  - component: {fileID: 1143649061}
   m_Layer: 5
   m_Name: TitleMenu
   m_TagString: Untagged
@@ -1106,18 +1109,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143649057}
   m_CullTransparentMesh: 1
---- !u!114 &1143649061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1143649057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c451310009118d4db8b6509c2497a1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1200303939
 GameObject:
   m_ObjectHideFlags: 0
