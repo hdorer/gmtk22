@@ -4,17 +4,22 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class GameTile : GridAligned {
-    protected Tilemap tilemap;
-    
-    private UndoEvents undoEvents;
+    [SerializeField] protected Tilemap tilemap;
+
+    [SerializeField] private UndoEvents undoEvents;
 
     private void OnValidate() {
-        if(levelGrid == null) {
-            if(GetComponentInParent<TileParent>() == null) {
-                Debug.Log("This object must be a child of a TileParent!");
-            } else {
+        if(GetComponentInParent<TileParent>() == null) {
+            Debug.Log("This object must be a child of a TileParent!");
+        } else {
+            if(levelGrid == null) {
                 levelGrid = GetComponentInParent<TileParent>().LevelGrid;
+            }
+            if(tilemap == null) {
                 tilemap = GetComponentInParent<TileParent>().Tilemap;
+            }
+            if(undoEvents == null) {
+                undoEvents = GetComponentInParent<TileParent>().UndoEvents;
             }
         }
 
