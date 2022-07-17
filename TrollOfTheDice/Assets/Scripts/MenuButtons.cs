@@ -13,7 +13,7 @@ public class MenuButtons : MonoBehaviour {
     private void Update() {
         float vertical = Input.GetAxisRaw("Vertical");
 
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0)) {
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Joystick1Button0)) {
             if(selectedOption == 0) {
                 MenuButton();
             } else if(selectedOption == 1) {
