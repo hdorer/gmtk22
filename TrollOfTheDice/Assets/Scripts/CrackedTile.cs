@@ -34,5 +34,8 @@ public class CrackedTile : Undoable {
         ignoreTriggerExit = true;
         bool lastState = moveStates.Pop();
         isBroken = lastState;
+        if(!isBroken) {
+            gameObject.layer = LayerMask.NameToLayer("Default");
+        }
     }
 }
